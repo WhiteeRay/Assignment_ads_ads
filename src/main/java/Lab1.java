@@ -15,6 +15,7 @@ public class Lab1 {
 
         System.out.println(findMinimumOfTheArray(n,arr));
         System.out.println(findAverageOfAnArray(n,arr));
+        System.out.println(isPrime(n));
         sc.close();
 
 
