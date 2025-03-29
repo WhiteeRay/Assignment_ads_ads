@@ -88,4 +88,15 @@ public class Lab1 {
     }
 
 
+    public static int calculateFib(int n){
+        // Base cases: Fibonacci of 0 is 0, and Fibonacci of 1 is 1
+        // Time Complexity: O(1) (constant time for base cases)
+        if(n ==0 || n==1) return n;
+
+        // Recursive case: Fibonacci of n is the sum of the previous two Fibonacci numbers
+        // Time Complexity: O(2^n) (exponential time complexity)
+        return calculateFib(n-1) + calculateFib(n-2);
+    }
+
+
 }
