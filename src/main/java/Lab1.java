@@ -90,8 +90,16 @@ public class Lab1 {
 
 
     public static int findPowerOfNum(int n, int p){
+        // Base case: Any number raised to the power of 0 is 1
+        // Time Complexity: O(1) (constant time for base case)
         if(p==0) return 1;
+
+        // Base case: Any number raised to the power of 0 is 1
+        // Time Complexity: O(1) (constant time for base case)
         if(p==1) return n;
+
+        // Recursive case: Multiply 'n' by the result of findPowerOfNum(n, p-1)
+        // Time Complexity: O(p) (linear time complexity)
         return n* findPowerOfNum(n,p-1);
 
     }
