@@ -16,6 +16,7 @@ public class Lab1 {
         System.out.println(findMinimumOfTheArray(n,arr));
         System.out.println(findAverageOfAnArray(n,arr));
         System.out.println(isPrime(n));
+        System.out.println(factorial(n));
         sc.close();
 
 
@@ -70,6 +71,20 @@ public class Lab1 {
             if(num % i ==0) return false;
         }
         return true;
+    }
+
+
+
+    /*
+     Recursively calculates the factorial of a number.
+     @param n the number to compute factorial for
+     @return n! (factorial of n)
+     Time Complexity: O(n) (Linear Time Complexity),
+     as the function calls itself n times.
+     */
+    public static int factorial(int n){
+        if(n==0|| n==1) return 1;
+        return n * factorial(n-1);
     }
 
 
