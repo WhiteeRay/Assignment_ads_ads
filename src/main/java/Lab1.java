@@ -3,10 +3,11 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
 
 
-        System.out.println(findPowerOfNum(2,10));
+        printReverseOrder(n,sc);
         sc.close();
 
 
@@ -103,6 +104,25 @@ public class Lab1 {
         return n* findPowerOfNum(n,p-1);
 
     }
+
+    /*
+     Recursively prints numbers in reverse order.
+     @param n the number of elements to read and print
+     @param sc the Scanner object for reading input
+     Time Complexity: O(n) (Linear Time Complexity),
+     as the function calls itself n times.
+     Space Complexity: O(n) (Recursive Call Stack),
+     since each function call is stored until it returns.
+    */
+    public static void printReverseOrder(int n, Scanner sc){
+        if(n==0) return;
+        int num = sc.nextInt();
+        printReverseOrder(n-1,sc);
+        System.out.print(num + " ");
+
+    }
+
+
 
 
 }
