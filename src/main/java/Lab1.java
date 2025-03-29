@@ -48,7 +48,7 @@ public class Lab1 {
       as we iterate through the array once to calculate the sum.
      */
     public static double findAverageOfAnArray(int n, int[] arr){
-        int sum =0;
+        int sum = 0;
         for(int num : arr){
             sum+=num;
         }
