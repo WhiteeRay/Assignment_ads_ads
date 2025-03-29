@@ -3,20 +3,10 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-
-        for(int i =0; i<n;i++){
-            arr[i] =sc.nextInt();
-        }
 
 
 
-
-        System.out.println(findMinimumOfTheArray(n,arr));
-        System.out.println(findAverageOfAnArray(n,arr));
-        System.out.println(isPrime(n));
-        System.out.println(factorial(n));
+        System.out.println(findPowerOfNum(2,10));
         sc.close();
 
 
@@ -96,6 +86,14 @@ public class Lab1 {
         // Recursive case: Fibonacci of n is the sum of the previous two Fibonacci numbers
         // Time Complexity: O(2^n) (exponential time complexity)
         return calculateFib(n-1) + calculateFib(n-2);
+    }
+
+
+    public static int findPowerOfNum(int n, int p){
+        if(p==0) return 1;
+        if(p==1) return n;
+        return n* findPowerOfNum(n,p-1);
+
     }
 
 
