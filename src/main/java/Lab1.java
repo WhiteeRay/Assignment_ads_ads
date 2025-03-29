@@ -55,7 +55,21 @@ public class Lab1 {
         return (double) sum/n;
     }
 
+    /**
+     * Checks if a number is prime.
+     * @param num the number to check
+     * @return true if the number is prime, otherwise false
+     * Time Complexity: O(√n) (Sublinear Time Complexity),
+     * since we check divisibility up to sqrt(n).
+     */
 
+    public static boolean isPrime(int num){
+        if(num <2) return false;
+        for(int i = 2; i<=Math.sqrt(num);i++){
+            if(num % i ==0) return false;
+        }
+        return true;
+    }
 
 
 }
