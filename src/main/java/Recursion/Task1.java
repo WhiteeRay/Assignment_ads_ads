@@ -12,18 +12,20 @@ public class Task1 {
             arr[i] =sc.nextInt();
         }
 
+
+        /*
+          Finds the minimum element in the given array.
+          @param n   the size of the array
+          @param arr the array containing elements
+          @return the minimum element in the array
+          Time Complexity: O(n), where n is the number of elements in the array.
+          The function iterates through the array once, making it linear in complexity.
+         */
+
         System.out.println(minimumOfTheArray(n,arr));
         sc.close();
-        /*
-         * Finds the minimum element in the given array.
-         *
-         * @param n   the size of the array
-         * @param arr the array containing elements
-         * @return the minimum element in the array
-         *
-         * Time Complexity: O(n), where n is the number of elements in the array.
-         * The function iterates through the array once, making it linear in complexity.
-         */
+
+
     }
 
     public static int minimumOfTheArray(int n, int[] arr){
