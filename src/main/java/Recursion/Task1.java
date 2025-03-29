@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Task1 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine());
+        int n = sc.nextInt();
         int[] arr = new int[n];
 
         for(int i =0; i<n;i++){
@@ -14,7 +14,7 @@ public class Task1 {
 
         System.out.println(minimumOfTheArray(n,arr));
         sc.close();
-        /**
+        /*
          * Finds the minimum element in the given array.
          *
          * @param n   the size of the array
