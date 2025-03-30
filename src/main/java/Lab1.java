@@ -8,6 +8,8 @@ public class Lab1 {
 
         System.out.println(isAllDigits("123456",0));
         System.out.println(binomialCoefficient(2,1));
+
+        System.out.println(GCD(32,48));
         sc.close();
 
 
@@ -155,6 +157,20 @@ public class Lab1 {
         }
         return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
 
+    }
+
+
+    /**
+     * Computes the Greatest Common Divisor (GCD) using the Euclidean algorithm. <br>
+     * Time Complexity: O(log min(n, m)) (Logarithmic). <br>
+     *
+     * @param n First number.
+     * @param m Second number.
+     * @return The GCD of n and m.
+     */
+    public static int GCD(int n, int m){
+        if(m==0)return n;
+        return GCD(m,n%m);
     }
 
 }
