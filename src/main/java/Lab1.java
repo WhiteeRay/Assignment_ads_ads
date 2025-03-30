@@ -10,6 +10,7 @@ public class Lab1 {
         System.out.println(binomialCoefficient(2,1));
 
         System.out.println(GCD(32,48));
+        stringMingling("abcde", "pqrst", 0);
         sc.close();
 
 
@@ -188,6 +189,24 @@ public class Lab1 {
         if(n ==0 || n==1) return n;
         return calculateFib(n-1) + calculateFib(n-2);
     }
+
+
+    /**
+     * Recursively interweaves two strings character by character.
+     * Time Complexity: O(n) (Linear Time Complexity),
+     * as the function makes a single recursive call for each character in the strings.
+     *
+     * @param s1 The first input string.
+     * @param s2 The second input string.
+     * @param n The current index being processed.
+     */
+    public static void stringMingling(String s1, String s2, int n){
+        if( n== s1.length()) return;
+        System.out.print(s1.charAt(n) +""+ s2.charAt(n));
+        stringMingling(s1,s2,n+1);
+    }
+
+
 
 
 
