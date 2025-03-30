@@ -6,9 +6,177 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(stringCompression("abcd",0,0));
+        while(true){
+            System.out.println("Choose the number between 1-3: ");
+            System.out.println("1 - Solution of the problems.");
+            System.out.println("2 - Solution of the Bonus tasks.");
+            System.out.println("3 - EXIT");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    startProblem(sc);
+                    break;
+                case 2:
+                    startBonus(sc);
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Invalid choice!");
+                    break;
+            }
+        }
+
+
 
     }
+    public static void startProblem(Scanner sc){
+        while(true){
+            System.out.println("Choose the number between 1-10: ");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    System.out.println("Problem 1: ");
+                    int[] arr = readArray(sc);
+                    System.out.println(findMinimumOfTheArray(arr));
+                    System.out.println("---------------------------");
+                    break;
+                case 2:
+                    System.out.println("Problem 2: ");
+                    int[] arr1 = readArray(sc);
+                    System.out.println(findAverageOfAnArray(arr1));
+                    System.out.println("--------------------------");
+                    break;
+                case 3:
+                    System.out.println("Problem 3: ");
+                    System.out.println(isPrime(sc.nextInt()) ? "Prime" : "Composite");
+                    System.out.println("---------------------------");
+                    break;
+                case 4:
+                    System.out.println("Problem 4: ");
+                    System.out.println(findFactorial(sc.nextInt()));
+                    System.out.println("----------------------------");
+                    break;
+                case 5:
+                    System.out.println("Problem 5: ");
+                    System.out.println(calculateFib(sc.nextInt()));
+                    System.out.println("----------------------------");
+                    break;
+                case 6:
+                    System.out.println("Problem 6: ");
+                    System.out.println(findPowerOfNum(sc.nextInt(), sc.nextInt()));
+                    System.out.println("------------------------------");
+                    break;
+                case 7:
+                    System.out.println("Problem 7: ");
+                    printReverseOrder(sc.nextInt(), sc);
+                    System.out.println();
+                    System.out.println("-------------------------------");
+                    break;
+                case 8:
+                    System.out.println("Problem 8: ");
+                    sc.nextLine();
+                    String s = sc.nextLine();
+                    System.out.println(isAllDigits(s, 0) ? "Yes" : "No");
+                    System.out.println("---------------------------------");
+                    break;
+                case 9:
+                    System.out.println("Problem 9: ");
+                    System.out.println(binomialCoefficient(sc.nextInt(), sc.nextInt()));
+                    System.out.println("----------------------------------");
+                    break;
+                case 10:
+                    System.out.println("Problem 10: ");
+                    System.out.println(GCD(sc.nextInt(), sc.nextInt()));
+                    System.out.println("-----------------------------------");
+                    break;
+                case 0:
+                    System.out.println("Exit");
+                    return;
+                default:
+                    System.out.println("Invalid choice!");
+                    break;
+
+            }
+
+        }
+
+    }
+    public static void startBonus(Scanner sc){
+        while(true){
+            System.out.println("Choose the number between 1-8: ");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    System.out.println("Bonus 1: Fibonacci Numbers ");
+                    System.out.println(fibonacciSeries(sc.nextInt()));
+                    System.out.println("---------------------------");
+                    break;
+                case 2:
+                    System.out.println("Bonus 2: String Mingling");
+                    sc.nextLine();
+                    stringMingling(sc.nextLine(),sc.nextLine(),0);
+                    System.out.println();
+                    System.out.println("--------------------------");
+                    break;
+                case 3:
+                    System.out.println("Bonus 3: String-o-Permute ");
+                    int n = sc.nextInt();
+                    sc.nextLine();
+                    String[] arr = new String[n];
+                    for(int i =0; i< n;i++){
+                        arr[i] = sc.nextLine();
+                    }
+                    for(int i =0 ;i <n;i++){
+                        stringOPermute(arr[i],0);
+                        System.out.println();
+                    }
+                    System.out.println("---------------------------");
+                    break;
+                case 4:
+                    System.out.println("Bonus 4: Sequence full of colors ");
+                    String[] arr1 = readStringArray(sc);
+                    System.out.println();
+                    for(int i =0;i< arr1.length;i++){
+                        System.out.println(findSequenceFullOfColors(arr1[i],0,0,0,0,0));
+                    }
+                    System.out.println("----------------------------");
+                    break;
+                case 5:
+                    System.out.println("Bonus 5: Computing the GCD");
+                    System.out.println(findGcd(sc.nextInt(), sc.nextInt()));
+                    System.out.println("----------------------------");
+                    break;
+                case 6:
+                    System.out.println("Bonus 6: String Reductions ");
+                    sc.nextLine();
+                    System.out.println(stringReductions(sc.nextLine(),0,new boolean[26]));
+                    System.out.println("------------------------------");
+                    break;
+                case 7:
+                    System.out.println("Bonus 7: String Compression ");
+                    sc.nextLine();
+                    System.out.println(stringCompression(sc.nextLine(),0,0));
+                    System.out.println("-------------------------------");
+                    break;
+                case 8:
+                    System.out.println("Bonus 8: Pascal's Triangle ");
+                    PascalTriangle(sc.nextInt());
+                    System.out.println("---------------------------------");
+                    break;
+                case 0:
+                    System.out.println("Exit");
+                    return;
+                default:
+                    System.out.println("Invalid choice!");
+                    break;
+
+            }
+
+        }
+
+    }
+
     /*
       Finds the minimum element in the given array.
       @param n   the size of the array
@@ -18,9 +186,9 @@ public class Lab1 {
       as we iterate through the array once.
      */
 
-    public static int findMinimumOfTheArray(int n, int[] arr) {
+    public static int findMinimumOfTheArray(int[] arr) {
         int min = arr[0];
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < arr.length; i++) {
             if (arr[i] < min) {
                 min = arr[i];
             }
@@ -37,12 +205,12 @@ public class Lab1 {
       Time Complexity: O(n), (Linear Time Complexity)
       as we iterate through the array once to calculate the sum.
      */
-    public static double findAverageOfAnArray(int n, int[] arr) {
+    public static double findAverageOfAnArray(int[] arr) {
         int sum = 0;
         for (int num : arr) {
             sum += num;
         }
-        return (double) sum / n;
+        return (double) sum /arr.length;
     }
 
     /**
@@ -70,9 +238,9 @@ public class Lab1 {
      Time Complexity: O(n) (Linear Time Complexity),
      as the function calls itself n times.
      */
-    public static int factorial(int n) {
+    public static int findFactorial(int n) {
         if (n == 0 || n == 1) return 1;
-        return n * factorial(n - 1);
+        return n * findFactorial(n - 1);
     }
 
     /**
@@ -89,17 +257,20 @@ public class Lab1 {
     }
 
 
+    /**
+     * Recursively calculates the power of a number.
+     *
+     * @param n the base number
+     * @param p the exponent to raise the base to
+     * @return the result of n^p
+     *
+     * Time Complexity: O(p) (Linear Time Complexity),
+     * as the function calls itself p times.
+     */
+
     public static int findPowerOfNum(int n, int p) {
-        // Base case: Any number raised to the power of 0 is 1
-        // Time Complexity: O(1) (constant time for base case)
         if (p == 0) return 1;
-
-        // Base case: Any number raised to the power of 0 is 1
-        // Time Complexity: O(1) (constant time for base case)
         if (p == 1) return n;
-
-        // Recursive case: Multiply 'n' by the result of findPowerOfNum(n, p-1)
-        // Time Complexity: O(p) (linear time complexity)
         return n * findPowerOfNum(n, p - 1);
 
     }
@@ -180,7 +351,7 @@ public class Lab1 {
      */
     public static int fibonacciSeries(int n) {
         if (n == 0 || n == 1) return n;
-        return calculateFib(n - 1) + calculateFib(n - 2);
+        return fibonacciSeries(n - 1) + fibonacciSeries(n - 2);
     }
 
 
@@ -195,7 +366,7 @@ public class Lab1 {
      */
     public static void stringMingling(String s1, String s2, int n) {
         if (n == s1.length()) return;
-        System.out.print(s1.charAt(n) + "" + s2.charAt(n));
+        System.out.print("" + s1.charAt(n) + s2.charAt(n));
         stringMingling(s1, s2, n + 1);
     }
 
@@ -209,10 +380,18 @@ public class Lab1 {
      * @param index The current index being processed.
      */
     public static void stringOPermute(String s, int index) {
-        if (s.length() == index) return;
+        if (index >= s.length()-1){
+            System.out.print(s.charAt(index));
+            return;
+        }
+        if (s == null || s.isEmpty()) {
+            return;
+        }
         System.out.print(s.charAt(index + 1));
         System.out.print(s.charAt(index));
-        stringOPermute(s, index + 2);
+        if (index + 2 < s.length()) {
+            stringOPermute(s, index + 2);
+        }
 
 
     }
@@ -251,7 +430,7 @@ public class Lab1 {
      */
     public static int findGcd(int n, int m) {
         if (m == 0) return n;
-        return GCD(m, n % m);
+        return findGcd(m, n % m);
     }
 
 
@@ -295,9 +474,34 @@ public class Lab1 {
         }
         return  (count>1 ? count : "")+"" + s.charAt(n) + stringCompression(s,n+1,1);
 
-
+    }
+    public static int[] readArray(Scanner sc){
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i =0; i< n;i++){
+            arr[i] = sc.nextInt();
+        }
+        return arr;
     }
 
+    public static String[] readStringArray(Scanner sc){
+        int n = sc.nextInt();
+        String[] arr = new String[n];
+        for(int i =0; i<n;i++){
+            arr[i] = sc.nextLine();
+        }
+        return arr;
+    }
+
+    public static void PascalTriangle(int n){
+        for(int i =0 ;i <n;i++){
+            for(int j =0;j<=i;j++){
+                System.out.print(binomialCoefficient(i,j) + " ");
+
+            }
+            System.out.println();
+        }
+    }
 
 }
 
