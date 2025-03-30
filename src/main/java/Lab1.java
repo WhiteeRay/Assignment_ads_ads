@@ -80,14 +80,16 @@ public class Lab1 {
         return n * factorial(n-1);
     }
 
-
+    /**
+     * Recursively calculates the nth Fibonacci number.
+     * Time Complexity: O(2^n) (Exponential Time Complexity),
+     * as each call branches into two more recursive calls.
+     *
+     * @param n The position in the Fibonacci sequence.
+     * @return The nth Fibonacci number.
+     */
     public static int calculateFib(int n){
-        // Base cases: Fibonacci of 0 is 0, and Fibonacci of 1 is 1
-        // Time Complexity: O(1) (constant time for base cases)
         if(n ==0 || n==1) return n;
-
-        // Recursive case: Fibonacci of n is the sum of the previous two Fibonacci numbers
-        // Time Complexity: O(2^n) (exponential time complexity)
         return calculateFib(n-1) + calculateFib(n-2);
     }
 
@@ -172,5 +174,25 @@ public class Lab1 {
         if(m==0)return n;
         return GCD(m,n%m);
     }
+
+
+    /**
+     * Recursively calculates the nth Fibonacci number.
+     * Time Complexity: O(2^n) (Exponential Time Complexity),
+     * as each call branches into two more recursive calls.
+     *
+     * @param n The position in the Fibonacci sequence.
+     * @return The nth Fibonacci number.
+     */
+    public static int fibonacciSeries(int n){
+        if(n ==0 || n==1) return n;
+        return calculateFib(n-1) + calculateFib(n-2);
+    }
+
+
+
+
+
+
 
 }
