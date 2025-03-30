@@ -486,6 +486,7 @@ public class Lab1 {
 
     public static String[] readStringArray(Scanner sc){
         int n = sc.nextInt();
+        sc.nextLine();
         String[] arr = new String[n];
         for(int i =0; i<n;i++){
             arr[i] = sc.nextLine();
