@@ -19,8 +19,7 @@ public class Lab1 {
             letter.add(i, sc.next());
         }
         for(String let : letter){
-            stringOPermute(let,0);
-            System.out.println();
+            System.out.println(findSequenceFullOfColors(let,0,0,0,0,0));
         }
         sc.close();
 
@@ -233,6 +232,32 @@ public class Lab1 {
 
 
     }
+
+    /**
+     * Checks if the given sequence is full of colors using recursion.
+     * @param s The input sequence consisting of 'R', 'G', 'Y', and 'B'.
+     * @return True if the sequence satisfies all conditions, otherwise False.
+     * Time Complexity: O(n) (Linear Time Complexity),
+     * as each character is checked once.
+     */
+    public static boolean findSequenceFullOfColors(String s,int g,int b,int y,int r, int index){
+        if(index == s.length()){
+            return (r==g)&&(y==b);
+        }
+        char ch = s.charAt(index);
+        if(ch == 'R') r++;
+        else if(ch =='B') b++;
+        else if(ch == 'G') g++;
+        else if (ch == 'Y') y++;
+        if(Math.abs(r-g) > 1 || Math.abs(y-b) > 1){
+            return false;
+        }
+        return findSequenceFullOfColors(s,g,b,y,r,index+1);
+    }
+
+
+
+
 
 
 }
