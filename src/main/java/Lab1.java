@@ -6,23 +6,7 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        ArrayList<String> letter = new ArrayList<>();
-
-
-        System.out.println(isAllDigits("123456", 0));
-        System.out.println(binomialCoefficient(2, 1));
-
-        System.out.println(GCD(32, 48));
-        stringMingling("abcde", "pqrst", 0);
-        for (int i = 0; i < n; i++){
-            letter.add(i, sc.next());
-        }
-        for(String let : letter){
-            System.out.println(findSequenceFullOfColors(let,0,0,0,0,0));
-        }
-        sc.close();
-        System.out.println(findGcd(36,48));
+        System.out.println(stringReductions("accabb", 0, new boolean[26]));
 
 
     }
@@ -269,6 +253,28 @@ public class Lab1 {
     public static int findGcd(int n, int m) {
         if (m == 0) return n;
         return GCD(m, n % m);
+    }
+
+
+    /**
+     * Recursively removes duplicate characters from the string.
+     * @param s The input string.
+     * @param n Current position in the string.
+     * @param letters Boolean array to track seen characters.
+     * @return The string after removing duplicates.
+     *
+     * Time Complexity: O(n) (Linear Time Complexity),
+     * as each character is processed once.
+     */
+    public static String stringReductions(String s, int n, boolean[] letters) {
+        if (s.length() == n) return "";
+        char currentChar = s.charAt(n);
+        if(letters[currentChar -'a']){
+            return stringReductions(s,n+1,letters);
+        }
+        letters[currentChar -'a']= true;
+        return currentChar + stringReductions(s,n+1,letters);
+
     }
 
 
