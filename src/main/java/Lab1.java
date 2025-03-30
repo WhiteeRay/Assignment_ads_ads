@@ -6,21 +6,20 @@ public class Lab1 {
         int n = sc.nextInt();
 
 
-
-        printReverseOrder(n,sc);
+        System.out.println(isAllDigits("123456",0));
         sc.close();
 
 
     }
-
     /*
-          Finds the minimum element in the given array.
-          @param n   the size of the array
-          @param arr the array containing elements
-          @return the minimum element in the array
-          Time Complexity: O(n) (Linear Time Complexity),
-          as we iterate through the array once.
-         */
+      Finds the minimum element in the given array.
+      @param n   the size of the array
+      @param arr the array containing elements
+      @return the minimum element in the array
+      Time Complexity: O(n) (Linear Time Complexity),
+      as we iterate through the array once.
+     */
+
     public static int findMinimumOfTheArray(int n, int[] arr){
         int min =arr[0];
         for(int i = 1;i < n;i++){
@@ -122,6 +121,20 @@ public class Lab1 {
 
     }
 
+
+    /*
+     Recursively checks if a string consists only of digits (0-9).
+     @param s the input string to check
+     @param index the current character index in the string
+     @return true if all characters are digits, false otherwise
+     Time Complexity: O(n) (Linear), as each character is checked once.
+     */
+
+    public static boolean isAllDigits(String s, int index) {
+        if (index == s.length()) return true;
+        if (!Character.isDigit(s.charAt(index))) return false;
+        return isAllDigits(s, index + 1);
+    }
 
 
 
