@@ -22,6 +22,7 @@ public class Lab1 {
             System.out.println(findSequenceFullOfColors(let,0,0,0,0,0));
         }
         sc.close();
+        System.out.println(findGcd(36,48));
 
 
     }
@@ -253,6 +254,21 @@ public class Lab1 {
             return false;
         }
         return findSequenceFullOfColors(s,g,b,y,r,index+1);
+    }
+
+
+
+    /**
+     * Computes the Greatest Common Divisor (GCD) using the Euclidean algorithm. <br>
+     * Time Complexity: O(log min(n, m)) (Logarithmic). <br>
+     *
+     * @param n First number.
+     * @param m Second number.
+     * @return The GCD of n and m.
+     */
+    public static int findGcd(int n, int m) {
+        if (m == 0) return n;
+        return GCD(m, n % m);
     }
 
 
