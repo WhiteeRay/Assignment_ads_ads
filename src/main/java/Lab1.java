@@ -1,16 +1,27 @@
+
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Lab1 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        ArrayList<String> letter = new ArrayList<>();
 
 
-        System.out.println(isAllDigits("123456",0));
-        System.out.println(binomialCoefficient(2,1));
+        System.out.println(isAllDigits("123456", 0));
+        System.out.println(binomialCoefficient(2, 1));
 
-        System.out.println(GCD(32,48));
+        System.out.println(GCD(32, 48));
         stringMingling("abcde", "pqrst", 0);
+        for (int i = 0; i < n; i++){
+            letter.add(i, sc.next());
+        }
+        for(String let : letter){
+            stringOPermute(let,0);
+            System.out.println();
+        }
         sc.close();
 
 
@@ -24,10 +35,10 @@ public class Lab1 {
       as we iterate through the array once.
      */
 
-    public static int findMinimumOfTheArray(int n, int[] arr){
-        int min =arr[0];
-        for(int i = 1;i < n;i++){
-            if(arr[i] < min){
+    public static int findMinimumOfTheArray(int n, int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i] < min) {
                 min = arr[i];
             }
         }
@@ -43,30 +54,30 @@ public class Lab1 {
       Time Complexity: O(n), (Linear Time Complexity)
       as we iterate through the array once to calculate the sum.
      */
-    public static double findAverageOfAnArray(int n, int[] arr){
+    public static double findAverageOfAnArray(int n, int[] arr) {
         int sum = 0;
-        for(int num : arr){
-            sum+=num;
+        for (int num : arr) {
+            sum += num;
         }
-        return (double) sum/n;
+        return (double) sum / n;
     }
 
     /**
      * Checks if a number is prime.
+     *
      * @param num the number to check
      * @return true if the number is prime, otherwise false
      * Time Complexity: O(√n) (Sublinear Time Complexity),
      * since we check divisibility up to sqrt(n).
      */
 
-    public static boolean isPrime(int num){
-        if(num <2) return false;
-        for(int i = 2; i<=Math.sqrt(num);i++){
-            if(num % i ==0) return false;
+    public static boolean isPrime(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
         }
         return true;
     }
-
 
 
     /*
@@ -76,9 +87,9 @@ public class Lab1 {
      Time Complexity: O(n) (Linear Time Complexity),
      as the function calls itself n times.
      */
-    public static int factorial(int n){
-        if(n==0|| n==1) return 1;
-        return n * factorial(n-1);
+    public static int factorial(int n) {
+        if (n == 0 || n == 1) return 1;
+        return n * factorial(n - 1);
     }
 
     /**
@@ -89,24 +100,24 @@ public class Lab1 {
      * @param n The position in the Fibonacci sequence.
      * @return The nth Fibonacci number.
      */
-    public static int calculateFib(int n){
-        if(n ==0 || n==1) return n;
-        return calculateFib(n-1) + calculateFib(n-2);
+    public static int calculateFib(int n) {
+        if (n == 0 || n == 1) return n;
+        return calculateFib(n - 1) + calculateFib(n - 2);
     }
 
 
-    public static int findPowerOfNum(int n, int p){
+    public static int findPowerOfNum(int n, int p) {
         // Base case: Any number raised to the power of 0 is 1
         // Time Complexity: O(1) (constant time for base case)
-        if(p==0) return 1;
+        if (p == 0) return 1;
 
         // Base case: Any number raised to the power of 0 is 1
         // Time Complexity: O(1) (constant time for base case)
-        if(p==1) return n;
+        if (p == 1) return n;
 
         // Recursive case: Multiply 'n' by the result of findPowerOfNum(n, p-1)
         // Time Complexity: O(p) (linear time complexity)
-        return n* findPowerOfNum(n,p-1);
+        return n * findPowerOfNum(n, p - 1);
 
     }
 
@@ -119,10 +130,10 @@ public class Lab1 {
      Space Complexity: O(n) (Recursive Call Stack),
      since each function call is stored until it returns.
     */
-    public static void printReverseOrder(int n, Scanner sc){
-        if(n==0) return;
+    public static void printReverseOrder(int n, Scanner sc) {
+        if (n == 0) return;
         int num = sc.nextInt();
-        printReverseOrder(n-1,sc);
+        printReverseOrder(n - 1, sc);
         System.out.print(num + " ");
 
     }
@@ -155,7 +166,7 @@ public class Lab1 {
      */
     public static int binomialCoefficient(int n, int k) {
         if (k == 0 || k == n) return 1;
-        if(n<0 || k<0){
+        if (n < 0 || k < 0) {
             throw new IllegalArgumentException("Numbers should be more than 0");
         }
         return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
@@ -171,9 +182,9 @@ public class Lab1 {
      * @param m Second number.
      * @return The GCD of n and m.
      */
-    public static int GCD(int n, int m){
-        if(m==0)return n;
-        return GCD(m,n%m);
+    public static int GCD(int n, int m) {
+        if (m == 0) return n;
+        return GCD(m, n % m);
     }
 
 
@@ -185,9 +196,9 @@ public class Lab1 {
      * @param n The position in the Fibonacci sequence.
      * @return The nth Fibonacci number.
      */
-    public static int fibonacciSeries(int n){
-        if(n ==0 || n==1) return n;
-        return calculateFib(n-1) + calculateFib(n-2);
+    public static int fibonacciSeries(int n) {
+        if (n == 0 || n == 1) return n;
+        return calculateFib(n - 1) + calculateFib(n - 2);
     }
 
 
@@ -198,20 +209,30 @@ public class Lab1 {
      *
      * @param s1 The first input string.
      * @param s2 The second input string.
-     * @param n The current index being processed.
+     * @param n  The current index being processed.
      */
-    public static void stringMingling(String s1, String s2, int n){
-        if( n== s1.length()) return;
-        System.out.print(s1.charAt(n) +""+ s2.charAt(n));
-        stringMingling(s1,s2,n+1);
+    public static void stringMingling(String s1, String s2, int n) {
+        if (n == s1.length()) return;
+        System.out.print(s1.charAt(n) + "" + s2.charAt(n));
+        stringMingling(s1, s2, n + 1);
     }
 
 
+    /**
+     * Recursively swaps adjacent characters in a given string.
+     * Time Complexity: O(n) (Linear Time Complexity),
+     * as the function processes each pair of characters once.
+     * @param s The input string.
+     * @param index The current index being processed.
+     */
+    public static void stringOPermute(String s, int index) {
+        if (s.length() == index) return;
+        System.out.print(s.charAt(index + 1));
+        System.out.print(s.charAt(index));
+        stringOPermute(s, index + 2);
 
 
-
-
-
+    }
 
 
 }
