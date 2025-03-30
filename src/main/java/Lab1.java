@@ -136,6 +136,24 @@ public class Lab1 {
         if (!Character.isDigit(s.charAt(index))) return false;
         return isAllDigits(s, index + 1);
     }
+    /**
+     * Computes the binomial coefficient C(n, k) using recursion. <br>
+     * Time Complexity: O(2ⁿ) (Exponential) due to repeated subproblems. <br>
+     * Space Complexity: O(n) (Recursive call stack).
+     *
+     * @param n Total elements.
+     * @param k Elements to choose.
+     * @return Binomial coefficient C(n, k).
+     * @throws IllegalArgumentException If n or k is negative.
+     */
+    public static int binomialCoefficient(int n, int k) {
+        if (k == 0 || k == n) return 1;
+        if (n < 0 || k < 0) {
+            throw new IllegalArgumentException("Numbers should be more than 0");
+        }
+        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
+
+    }
 
 
 }
