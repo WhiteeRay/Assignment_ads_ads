@@ -6,8 +6,7 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-
+        System.out.println(stringCompression("abcd",0,0));
 
     }
     /*
@@ -136,6 +135,7 @@ public class Lab1 {
         if (!Character.isDigit(s.charAt(index))) return false;
         return isAllDigits(s, index + 1);
     }
+
     /**
      * Computes the binomial coefficient C(n, k) using recursion. <br>
      * Time Complexity: O(2ⁿ) (Exponential) due to repeated subproblems. <br>
@@ -204,7 +204,8 @@ public class Lab1 {
      * Recursively swaps adjacent characters in a given string.
      * Time Complexity: O(n) (Linear Time Complexity),
      * as the function processes each pair of characters once.
-     * @param s The input string.
+     *
+     * @param s     The input string.
      * @param index The current index being processed.
      */
     public static void stringOPermute(String s, int index) {
@@ -218,26 +219,26 @@ public class Lab1 {
 
     /**
      * Checks if the given sequence is full of colors using recursion.
+     *
      * @param s The input sequence consisting of 'R', 'G', 'Y', and 'B'.
      * @return True if the sequence satisfies all conditions, otherwise False.
      * Time Complexity: O(n) (Linear Time Complexity),
      * as each character is checked once.
      */
-    public static boolean findSequenceFullOfColors(String s,int g,int b,int y,int r, int index){
-        if(index == s.length()){
-            return (r==g)&&(y==b);
+    public static boolean findSequenceFullOfColors(String s, int g, int b, int y, int r, int index) {
+        if (index == s.length()) {
+            return (r == g) && (y == b);
         }
         char ch = s.charAt(index);
-        if(ch == 'R') r++;
-        else if(ch =='B') b++;
-        else if(ch == 'G') g++;
+        if (ch == 'R') r++;
+        else if (ch == 'B') b++;
+        else if (ch == 'G') g++;
         else if (ch == 'Y') y++;
-        if(Math.abs(r-g) > 1 || Math.abs(y-b) > 1){
+        if (Math.abs(r - g) > 1 || Math.abs(y - b) > 1) {
             return false;
         }
-        return findSequenceFullOfColors(s,g,b,y,r,index+1);
+        return findSequenceFullOfColors(s, g, b, y, r, index + 1);
     }
-
 
 
     /**
@@ -256,28 +257,46 @@ public class Lab1 {
 
     /**
      * Recursively removes duplicate characters from the string.
-     * @param s The input string.
-     * @param n Current position in the string.
+     *
+     * @param s       The input string.
+     * @param n       Current position in the string.
      * @param letters Boolean array to track seen characters.
      * @return The string after removing duplicates.
-     *
+     * <p>
      * Time Complexity: O(n) (Linear Time Complexity),
      * as each character is processed once.
      */
     public static String stringReductions(String s, int n, boolean[] letters) {
         if (s.length() == n) return "";
         char currentChar = s.charAt(n);
-        if(letters[currentChar -'a']){
-            return stringReductions(s,n+1,letters);
+        if (letters[currentChar - 'a']) {
+            return stringReductions(s, n + 1, letters);
         }
-        letters[currentChar -'a']= true;
-        return currentChar + stringReductions(s,n+1,letters);
+        letters[currentChar - 'a'] = true;
+        return currentChar + stringReductions(s, n + 1, letters);
 
     }
 
+    /**
+     * Recursively compresses the given message.
+     * @param s The input string.
+     * @param n Current position in the string.
+     * @param count Current count of consecutive characters.
+     * @return The compressed string.
+     *
+     * Time Complexity: O(n) - Each character is processed once.
+     */
+    public static String stringCompression(String s, int n, int count) {
+        if (n == s.length()) {
+            return count>1 ? String.valueOf(count) : "";
+        }
+        if (n > 0 && s.charAt(n) == s.charAt(n - 1)) {
+            return stringCompression(s, n + 1, count + 1);
+        }
+        return  (count>1 ? count : "")+"" + s.charAt(n) + stringCompression(s,n+1,1);
 
 
-
+    }
 
 
 }
